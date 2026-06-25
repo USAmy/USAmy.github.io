@@ -3,268 +3,278 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Hacker Wiki</title>
+    <title>Lumina Yoga | 优雅与力量的共鸣</title>
     <style>
-        body {
-            background-color: #000;
-            color: #0f0;
-            font-family: 'Courier New', monospace;
+        /* 引入优雅的字体 */
+        @import url('https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@300;400;600&family=Lato:wght@300;400&display=swap');
+
+        :root {
+            --bg-color: #FDFBF7;
+            --text-main: #2C302E;
+            --text-light: #6B706D;
+            --accent-color: #586C5C;
+            --font-serif: 'Noto Serif SC', serif;
+            --font-sans: 'Lato', sans-serif;
+        }
+
+        * {
             margin: 0;
-            padding: 20px;
-            line-height: 1.4;
+            padding: 0;
+            box-sizing: border-box;
         }
-        
-        .container {
-            max-width: 900px;
-            margin: 0 auto;
-            border: 1px solid #0f0;
-            padding: 20px;
-            box-shadow: 0 0 15px rgba(0, 255, 0, 0.5);
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            font-family: var(--font-sans);
+            line-height: 1.6;
+            -webkit-font-smoothing: antialiased;
         }
-        
+
+        h1, h2, h3 {
+            font-family: var(--font-serif);
+            font-weight: 400;
+        }
+
+        /* 导航栏 */
         header {
-            text-align: center;
-            border-bottom: 1px dashed #0f0;
-            padding-bottom: 20px;
-            margin-bottom: 20px;
+            padding: 2rem 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
         }
-        
-        h1 {
-            color: #ff0;
-            text-shadow: 0 0 5px rgba(255, 255, 0, 0.7);
-            font-size: 2.5em;
-            letter-spacing: 3px;
+
+        .logo {
+            font-size: 1.5rem;
+            letter-spacing: 2px;
+            color: var(--accent-color);
+            font-family: var(--font-serif);
         }
-        
-        .terminal-prompt::before {
-            content: "> ";
-            color: #f00;
-        }
-        
-        nav {
-            margin: 20px 0;
-            text-align: center;
-        }
-        
+
         nav a {
-            color: #0af;
             text-decoration: none;
-            margin: 0 10px;
-            padding: 5px 10px;
-            border: 1px solid #0af;
-            display: inline-block;
+            color: var(--text-light);
+            margin-left: 2rem;
+            font-size: 0.9rem;
+            transition: color 0.3s;
         }
-        
+
         nav a:hover {
-            background-color: #003300;
-            color: #fff;
+            color: var(--accent-color);
         }
-        
-        .content-section {
-            margin: 20px 0;
-            padding: 15px;
-            border-left: 3px solid #0f0;
-            background-color: rgba(0, 30, 0, 0.2);
+
+        /* Hero 视觉区 */
+        .hero {
+            display: flex;
+            align-items: center;
+            padding: 4rem 5%;
+            min-height: 70vh;
+            gap: 4rem;
         }
-        
-        h2 {
-            color: #0af;
-            border-bottom: 1px dotted #0af;
-            padding-bottom: 5px;
+
+        .hero-text {
+            flex: 1;
         }
-        
-        code {
-            background-color: #001a00;
-            border: 1px solid #0a0;
-            padding: 2px 5px;
-            color: #ff0;
+
+        .hero-text h1 {
+            font-size: 3.5rem;
+            line-height: 1.2;
+            margin-bottom: 1.5rem;
+            color: var(--text-main);
         }
-        
-        pre {
-            background-color: #001a00;
-            border: 1px solid #0a0;
-            padding: 10px;
-            overflow-x: auto;
-            color: #0f0;
+
+        .hero-text p {
+            font-size: 1.1rem;
+            color: var(--text-light);
+            margin-bottom: 2rem;
+            max-width: 400px;
         }
-        
-        .glitch-text {
-            animation: glitch 1s infinite;
+
+        .hero-image {
+            flex: 1;
+            height: 600px;
+            overflow: hidden;
+            border-radius: 4px 40px 4px 4px; /* 柔和的不对称圆角 */
         }
-        
-        @keyframes glitch {
-            0% { transform: translate(0); }
-            20% { transform: translate(-2px, 2px); }
-            40% { transform: translate(-2px, -2px); }
-            60% { transform: translate(2px, 2px); }
-            80% { transform: translate(2px, -2px); }
-            100% { transform: translate(0); }
+
+        .hero-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            filter: brightness(0.95);
         }
-        
-        .scan-line {
-            position: fixed;
-            top: 0;
+
+        /* 模块通用样式 */
+        .section-title {
+            text-align: center;
+            font-size: 2.2rem;
+            margin: 6rem 0 3rem;
+            color: var(--text-main);
+        }
+
+        /* 训练展示区 (CSS Grid) */
+        .gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            padding: 0 5%;
+        }
+
+        .card {
+            position: relative;
+            overflow: hidden;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        .card img {
+            width: 100%;
+            height: 450px;
+            object-fit: cover;
+            transition: transform 0.6s ease;
+        }
+
+        .card:hover img {
+            transform: scale(1.05);
+        }
+
+        .card-info {
+            position: absolute;
+            bottom: 0;
             left: 0;
             width: 100%;
-            height: 5px;
-            background: rgba(0, 255, 0, 0.1);
-            animation: scan 4s linear infinite;
-            z-index: 9999;
+            padding: 2rem;
+            background: linear-gradient(transparent, rgba(0,0,0,0.6));
+            color: white;
         }
-        
-        @keyframes scan {
-            0% { top: 0; }
-            50% { top: 100%; }
-            100% { top: 0; }
+
+        .card-info h3 {
+            font-size: 1.2rem;
+            margin-bottom: 0.5rem;
         }
-        
-        footer {
-            margin-top: 30px;
+
+        /* 服装展示区 */
+        .apparel-section {
+            background-color: #F4F1EA;
+            padding: 4rem 5% 6rem;
+            margin-top: 6rem;
+        }
+
+        .apparel-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 3rem;
+        }
+
+        .apparel-item {
             text-align: center;
-            border-top: 1px dashed #0f0;
-            padding-top: 15px;
-            color: #aaa;
         }
-        
-        .blink {
-            animation: blink 1s step-end infinite;
+
+        .apparel-item img {
+            width: 100%;
+            height: 500px;
+            object-fit: cover;
+            border-radius: 4px;
+            margin-bottom: 1.5rem;
         }
-        
-        @keyframes blink {
-            50% { opacity: 0; }
+
+        .apparel-item h3 {
+            font-size: 1.1rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .apparel-item p {
+            font-size: 0.9rem;
+            color: var(--text-light);
+        }
+
+        /* 底部 */
+        footer {
+            text-align: center;
+            padding: 4rem 2rem;
+            color: var(--text-light);
+            font-size: 0.85rem;
+        }
+
+        /* 响应式适配 */
+        @min-width: 768px {
+            .hero {
+                flex-direction: column;
+                text-align: center;
+                padding-top: 2rem;
+            }
+            .hero-text p {
+                margin: 0 auto 2rem;
+            }
+            .apparel-grid {
+                grid-template-columns: 1fr;
+            }
         }
     </style>
 </head>
 <body>
-    <div class="scan-line"></div>
-    <div class="container">
-        <header>
-            <h1 class="glitch-text">SYSTEM WIKI v2.0.1</h1>
-            <p class="terminal-prompt">Accessing secure information repository...</p>
-        </header>
-        
+
+    <header>
+        <div class="logo">Lumina</div>
         <nav>
-            <a href="#security">Security Protocols</a>
-            <a href="#network">Network Mapping</a>
-            <a href="#tools">Hacking Tools</a>
-            <a href="#exploits">Exploits Database</a>
+            <a href="#training">训练流</a>
+            <a href="#apparel">呼吸感穿搭</a>
+            <a href="#about">关于我们</a>
         </nav>
-        
-        <main>
-            <section id="security" class="content-section">
-                <h2>🔒 Security Protocols</h2>
-                <p>This section contains information about common security vulnerabilities and countermeasures.</p>
-                
-                <h3>Common Attack Vectors:</h3>
-                <ul>
-                    <li>SQL Injection - <code>UNION SELECT</code> techniques</li>
-                    <li>Cross-Site Scripting (XSS) - Stored and Reflected</li>
-                    <li>Buffer Overflow - Stack and Heap based</li>
-                    <li>Man-in-the-Middle (MITM) attacks</li>
-                </ul>
-                
-                <h3>Mitigation Strategies:</h3>
-                <pre>
-Input validation:
-- Sanitize all user inputs
-- Use parameterized queries
-- Implement proper escaping
-- Apply principle of least privilege
-                </pre>
-            </section>
-            
-            <section id="network" class="content-section">
-                <h2>🌐 Network Mapping</h2>
-                <p>Techniques for discovering network topology and identifying vulnerable systems.</p>
-                
-                <h3>Port Scanning Commands:</h3>
-                <pre>
-nmap -sS -O target_ip          # Stealth SYN scan with OS detection
-nmap -sV --script vuln target   # Service version detection with vulnerability scripts
-masscan -p1-65535 target        # Fast port scanning across all ports
-                </pre>
-                
-                <h3>Network Discovery:</h3>
-                <p>Use tools like <code>netdiscover</code>, <code>fping</code>, and <code>arp-scan</code> to identify active hosts on a network segment.</p>
-            </section>
-            
-            <section id="tools" class="content-section">
-                <h2>🛠️ Hacking Tools</h2>
-                <p>Essential tools for penetration testing and security research.</p>
-                
-                <table style="width:100%; border-collapse: collapse;">
-                    <thead>
-                        <tr style="background-color: #001a00;">
-                            <th style="border: 1px solid #0f0; padding: 8px;">Tool</th>
-                            <th style="border: 1px solid #0f0; padding: 8px;">Purpose</th>
-                            <th style="border: 1px solid #0f0; padding: 8px;">Usage</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td style="border: 1px solid #0f0; padding: 8px;"><code>Metasploit</code></td>
-                            <td style="border: 1px solid #0f0; padding: 8px;">Exploitation Framework</td>
-                            <td style="border: 1px solid #0f0; padding: 8px;">msfconsole, search, exploit</td>
-                        </tr>
-                        <tr style="background-color: rgba(0, 30, 0, 0.2);">
-                            <td style="border: 1px solid #0f0; padding: 8px;"><code>Wireshark</code></td>
-                            <td style="border: 1px solid #0f0; padding: 8px;">Network Traffic Analysis</td>
-                            <td style="border: 1px solid #0f0; padding: 8px;">Capture, filter, analyze packets</td>
-                        </tr>
-                        <tr>
-                            <td style="border: 1px solid #0f0; padding: 8px;"><code>John the Ripper</code></td>
-                            <td style="border: 1px solid #0f0; padding: 8px;">Password Cracking</td>
-                            <td style="border: 1px solid #0f0; padding: 8px;">Hash cracking, wordlist attacks</td>
-                        </tr>
-                    </tbody>
-                </table>
-            </section>
-            
-            <section id="exploits" class="content-section">
-                <h2>💥 Exploits Database</h2>
-                <p>Collection of known vulnerabilities and proof-of-concept exploits.</p>
-                
-                <h3>Recent CVE Examples:</h3>
-                <ul>
-                    <li><code>CVE-2023-XXXX</code>: Buffer overflow in web server authentication</li>
-                    <li><code>CVE-2023-YYYY</code>: Remote code execution via crafted packets</li>
-                    <li><code>CVE-2023-ZZZZ</code>: Privilege escalation through kernel driver</li>
-                </ul>
-                
-                <h3>Exploit Development Tips:</h3>
-                <p>Always ensure you have proper authorization before testing exploits. Follow responsible disclosure practices.</p>
-                
-                <div style="margin-top: 20px; padding: 10px; background-color: rgba(100, 0, 0, 0.2); border: 1px solid #f00;">
-                    <p><span class="blink">⚠️</span> WARNING: This information is for educational purposes only. Unauthorized access to computer systems is illegal.</p>
-                </div>
-            </section>
-        </main>
-        
-        <footer>
-            <p>System Wiki v2.0.1 | Last Updated: <span id="date"></span></p>
-            <p>🔒 Encrypted Connection | Access Level: <span style="color:#f0f;">ADMIN</span></p>
-        </footer>
+    </header>
+
+    <section class="hero">
+        <div class="hero-text">
+            <h1>向内探索，<br>感知身体的边界。</h1>
+            <p>专注于呼吸与动作的连结。为您呈现欧美最前沿的瑜伽美学，探索力量与柔韧的完美平衡。</p>
+        </div>
+        <div class="hero-image">
+            <img src="https://images.unsplash.com/photo-1599901860904-17e6ed7083a0?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80" alt="Elegant Yoga Pose">
+        </div>
+    </section>
+
+    <h2 class="section-title" id="training">觉知训练</h2>
+    <section class="gallery">
+        <div class="card">
+            <img src="https://images.unsplash.com/photo-1506126613408-eca07ce68773?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Vinyasa Flow">
+            <div class="card-info">
+                <h3>Vinyasa 流瑜伽</h3>
+                <p>如水般流动的力量</p>
+            </div>
+        </div>
+        <div class="card">
+            <img src="https://images.unsplash.com/photo-1544367567-0f2fcb009e0b?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Mindful Stretching">
+            <div class="card-info">
+                <h3>深层伸展</h3>
+                <p>释放肌肉的深层记忆</p>
+            </div>
+        </div>
+    </section>
+
+    <div class="apparel-section" id="apparel">
+        <h2 class="section-title" style="margin-top: 0;">第二层肌肤</h2>
+        <section class="apparel-grid">
+            <div class="apparel-item">
+                <img src="https://images.unsplash.com/photo-1606902965551-dce093cda6a7?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Yoga Top">
+                <h3>云感无缝运动内衣</h3>
+                <p>高阶支撑 / 裸感体验</p>
+            </div>
+            <div class="apparel-item">
+                <img src="https://images.unsplash.com/photo-1518611012118-696072aa579a?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Yoga Leggings">
+                <h3>高腰立体塑形紧身裤</h3>
+                <p>哑光质感 / 极致延展</p>
+            </div>
+            <div class="apparel-item">
+                <img src="https://images.unsplash.com/photo-1620012253295-c159d25ab775?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Yoga Set">
+                <h3>莫兰迪系列套装</h3>
+                <p>从工作室到街头的从容</p>
+            </div>
+        </section>
     </div>
 
-    <script>
-        // Set current date
-        document.getElementById('date').textContent = new Date().toISOString().split('T')[0];
-        
-        // Add terminal-like typing effect to prompt
-        const prompt = document.querySelector('.terminal-prompt');
-        let i = 0;
-        const txt = prompt.textContent.substring(2); // Remove the "> "
-        prompt.textContent = "";
-        
-        function typeWriter() {
-            if (i < txt.length) {
-                prompt.innerHTML += txt.charAt(i);
-                i++;
-                setTimeout(typeWriter, 100);
-            }
-        }
-        
-        window.onload = typeWriter;
-    </script>
+    <footer>
+        <p>&copy; 2026 Lumina Yoga Aesthetics. All Rights Reserved.</p>
+    </footer>
+
 </body>
 </html>
