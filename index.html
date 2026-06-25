@@ -5,7 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Lumina Yoga | 优雅与力量的共鸣</title>
     <style>
-        /* 引入优雅的字体 */
         @import url('https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@300;400;600&family=Lato:wght@300;400&display=swap');
 
         :root {
@@ -94,14 +93,15 @@
             flex: 1;
             height: 600px;
             overflow: hidden;
-            border-radius: 4px 40px 4px 4px; /* 柔和的不对称圆角 */
+            border-radius: 4px 40px 4px 4px;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.1);
         }
 
         .hero-image img {
             width: 100%;
             height: 100%;
             object-fit: cover;
-            filter: brightness(0.95);
+            filter: brightness(0.95) contrast(1.05); /* 微微增加对比度提升高级感 */
         }
 
         /* 模块通用样式 */
@@ -112,7 +112,7 @@
             color: var(--text-main);
         }
 
-        /* 训练展示区 (CSS Grid) */
+        /* 训练展示区 */
         .gallery {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
@@ -125,11 +125,12 @@
             overflow: hidden;
             border-radius: 4px;
             cursor: pointer;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.08);
         }
 
         .card img {
             width: 100%;
-            height: 450px;
+            height: 500px; /* 增加图片高度以更好地展示修长身形 */
             object-fit: cover;
             transition: transform 0.6s ease;
         }
@@ -143,14 +144,15 @@
             bottom: 0;
             left: 0;
             width: 100%;
-            padding: 2rem;
-            background: linear-gradient(transparent, rgba(0,0,0,0.6));
+            padding: 2.5rem 2rem 2rem;
+            background: linear-gradient(transparent, rgba(0,0,0,0.7));
             color: white;
         }
 
         .card-info h3 {
-            font-size: 1.2rem;
+            font-size: 1.3rem;
             margin-bottom: 0.5rem;
+            letter-spacing: 1px;
         }
 
         /* 服装展示区 */
@@ -172,10 +174,16 @@
 
         .apparel-item img {
             width: 100%;
-            height: 500px;
+            height: 550px;
             object-fit: cover;
             border-radius: 4px;
             margin-bottom: 1.5rem;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.06);
+            transition: opacity 0.3s ease;
+        }
+        
+        .apparel-item img:hover {
+            opacity: 0.9;
         }
 
         .apparel-item h3 {
@@ -197,7 +205,7 @@
         }
 
         /* 响应式适配 */
-        @min-width: 768px {
+        @media (max-width: 768px) {
             .hero {
                 flex-direction: column;
                 text-align: center;
@@ -217,35 +225,35 @@
     <header>
         <div class="logo">Lumina</div>
         <nav>
-            <a href="#training">训练流</a>
-            <a href="#apparel">呼吸感穿搭</a>
+            <a href="#training">体式美学</a>
+            <a href="#apparel">形体穿搭</a>
             <a href="#about">关于我们</a>
         </nav>
     </header>
 
     <section class="hero">
         <div class="hero-text">
-            <h1>向内探索，<br>感知身体的边界。</h1>
-            <p>专注于呼吸与动作的连结。为您呈现欧美最前沿的瑜伽美学，探索力量与柔韧的完美平衡。</p>
+            <h1>性感，<br>源于力量的掌控。</h1>
+            <p>专注于呼吸与肌肉线条的连结。为您呈现欧美最前沿的瑜伽美学，展现女性独有的柔韧、自信与迷人张力。</p>
         </div>
         <div class="hero-image">
-            <img src="https://images.unsplash.com/photo-1599901860904-17e6ed7083a0?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80" alt="Elegant Yoga Pose">
+            <img src="http://googleusercontent.com/image_collection/image_retrieval/3499026733790621130_0" alt="Beautiful Yoga Pose High Resolution">
         </div>
     </section>
 
-    <h2 class="section-title" id="training">觉知训练</h2>
+    <h2 class="section-title" id="training">觉知与曲线</h2>
     <section class="gallery">
         <div class="card">
-            <img src="https://images.unsplash.com/photo-1506126613408-eca07ce68773?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Vinyasa Flow">
+            <img src="http://googleusercontent.com/image_collection/image_retrieval/3499026733790621130_1" alt="Attractive Yoga Stretching">
             <div class="card-info">
                 <h3>Vinyasa 流瑜伽</h3>
-                <p>如水般流动的力量</p>
+                <p>勾勒迷人核心轮廓</p>
             </div>
         </div>
         <div class="card">
-            <img src="https://images.unsplash.com/photo-1544367567-0f2fcb009e0b?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Mindful Stretching">
+            <img src="http://googleusercontent.com/image_collection/image_retrieval/3499026733790621130_2" alt="Elegant Body Core">
             <div class="card-info">
-                <h3>深层伸展</h3>
+                <h3>深度塑形</h3>
                 <p>释放肌肉的深层记忆</p>
             </div>
         </div>
@@ -255,19 +263,19 @@
         <h2 class="section-title" style="margin-top: 0;">第二层肌肤</h2>
         <section class="apparel-grid">
             <div class="apparel-item">
-                <img src="https://images.unsplash.com/photo-1606902965551-dce093cda6a7?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Yoga Top">
+                <img src="http://googleusercontent.com/image_collection/image_retrieval/6060859734791454950_0" alt="Yoga Sports Bra HD">
                 <h3>云感无缝运动内衣</h3>
-                <p>高阶支撑 / 裸感体验</p>
+                <p>完美聚拢 / 裸感体验</p>
             </div>
             <div class="apparel-item">
-                <img src="https://images.unsplash.com/photo-1518611012118-696072aa579a?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Yoga Leggings">
-                <h3>高腰立体塑形紧身裤</h3>
-                <p>哑光质感 / 极致延展</p>
+                <img src="http://googleusercontent.com/image_collection/image_retrieval/6060859734791454950_1" alt="Yoga Leggings Fitness Model">
+                <h3>高腰立体提臀紧身裤</h3>
+                <p>哑光质感 / 极致贴合曲线</p>
             </div>
             <div class="apparel-item">
-                <img src="https://images.unsplash.com/photo-1620012253295-c159d25ab775?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Yoga Set">
+                <img src="http://googleusercontent.com/image_collection/image_retrieval/6060859734791454950_2" alt="Yoga Outfit Studio Photography">
                 <h3>莫兰迪系列套装</h3>
-                <p>从工作室到街头的从容</p>
+                <p>从工作室到街头的性感从容</p>
             </div>
         </section>
     </div>
