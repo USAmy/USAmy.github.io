@@ -1,7 +1,270 @@
 <!DOCTYPE html>
-<html>
+<html lang="zh-CN">
 <head>
-    <title>My Website</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hacker Wiki</title>
+    <style>
+        body {
+            background-color: #000;
+            color: #0f0;
+            font-family: 'Courier New', monospace;
+            margin: 0;
+            padding: 20px;
+            line-height: 1.4;
+        }
+        
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            border: 1px solid #0f0;
+            padding: 20px;
+            box-shadow: 0 0 15px rgba(0, 255, 0, 0.5);
+        }
+        
+        header {
+            text-align: center;
+            border-bottom: 1px dashed #0f0;
+            padding-bottom: 20px;
+            margin-bottom: 20px;
+        }
+        
+        h1 {
+            color: #ff0;
+            text-shadow: 0 0 5px rgba(255, 255, 0, 0.7);
+            font-size: 2.5em;
+            letter-spacing: 3px;
+        }
+        
+        .terminal-prompt::before {
+            content: "> ";
+            color: #f00;
+        }
+        
+        nav {
+            margin: 20px 0;
+            text-align: center;
+        }
+        
+        nav a {
+            color: #0af;
+            text-decoration: none;
+            margin: 0 10px;
+            padding: 5px 10px;
+            border: 1px solid #0af;
+            display: inline-block;
+        }
+        
+        nav a:hover {
+            background-color: #003300;
+            color: #fff;
+        }
+        
+        .content-section {
+            margin: 20px 0;
+            padding: 15px;
+            border-left: 3px solid #0f0;
+            background-color: rgba(0, 30, 0, 0.2);
+        }
+        
+        h2 {
+            color: #0af;
+            border-bottom: 1px dotted #0af;
+            padding-bottom: 5px;
+        }
+        
+        code {
+            background-color: #001a00;
+            border: 1px solid #0a0;
+            padding: 2px 5px;
+            color: #ff0;
+        }
+        
+        pre {
+            background-color: #001a00;
+            border: 1px solid #0a0;
+            padding: 10px;
+            overflow-x: auto;
+            color: #0f0;
+        }
+        
+        .glitch-text {
+            animation: glitch 1s infinite;
+        }
+        
+        @keyframes glitch {
+            0% { transform: translate(0); }
+            20% { transform: translate(-2px, 2px); }
+            40% { transform: translate(-2px, -2px); }
+            60% { transform: translate(2px, 2px); }
+            80% { transform: translate(2px, -2px); }
+            100% { transform: translate(0); }
+        }
+        
+        .scan-line {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 5px;
+            background: rgba(0, 255, 0, 0.1);
+            animation: scan 4s linear infinite;
+            z-index: 9999;
+        }
+        
+        @keyframes scan {
+            0% { top: 0; }
+            50% { top: 100%; }
+            100% { top: 0; }
+        }
+        
+        footer {
+            margin-top: 30px;
+            text-align: center;
+            border-top: 1px dashed #0f0;
+            padding-top: 15px;
+            color: #aaa;
+        }
+        
+        .blink {
+            animation: blink 1s step-end infinite;
+        }
+        
+        @keyframes blink {
+            50% { opacity: 0; }
+        }
+    </style>
 </head>
+<body>
+    <div class="scan-line"></div>
+    <div class="container">
+        <header>
+            <h1 class="glitch-text">SYSTEM WIKI v2.0.1</h1>
+            <p class="terminal-prompt">Accessing secure information repository...</p>
+        </header>
+        
+        <nav>
+            <a href="#security">Security Protocols</a>
+            <a href="#network">Network Mapping</a>
+            <a href="#tools">Hacking Tools</a>
+            <a href="#exploits">Exploits Database</a>
+        </nav>
+        
+        <main>
+            <section id="security" class="content-section">
+                <h2>🔒 Security Protocols</h2>
+                <p>This section contains information about common security vulnerabilities and countermeasures.</p>
+                
+                <h3>Common Attack Vectors:</h3>
+                <ul>
+                    <li>SQL Injection - <code>UNION SELECT</code> techniques</li>
+                    <li>Cross-Site Scripting (XSS) - Stored and Reflected</li>
+                    <li>Buffer Overflow - Stack and Heap based</li>
+                    <li>Man-in-the-Middle (MITM) attacks</li>
+                </ul>
+                
+                <h3>Mitigation Strategies:</h3>
+                <pre>
+Input validation:
+- Sanitize all user inputs
+- Use parameterized queries
+- Implement proper escaping
+- Apply principle of least privilege
+                </pre>
+            </section>
+            
+            <section id="network" class="content-section">
+                <h2>🌐 Network Mapping</h2>
+                <p>Techniques for discovering network topology and identifying vulnerable systems.</p>
+                
+                <h3>Port Scanning Commands:</h3>
+                <pre>
+nmap -sS -O target_ip          # Stealth SYN scan with OS detection
+nmap -sV --script vuln target   # Service version detection with vulnerability scripts
+masscan -p1-65535 target        # Fast port scanning across all ports
+                </pre>
+                
+                <h3>Network Discovery:</h3>
+                <p>Use tools like <code>netdiscover</code>, <code>fping</code>, and <code>arp-scan</code> to identify active hosts on a network segment.</p>
+            </section>
+            
+            <section id="tools" class="content-section">
+                <h2>🛠️ Hacking Tools</h2>
+                <p>Essential tools for penetration testing and security research.</p>
+                
+                <table style="width:100%; border-collapse: collapse;">
+                    <thead>
+                        <tr style="background-color: #001a00;">
+                            <th style="border: 1px solid #0f0; padding: 8px;">Tool</th>
+                            <th style="border: 1px solid #0f0; padding: 8px;">Purpose</th>
+                            <th style="border: 1px solid #0f0; padding: 8px;">Usage</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td style="border: 1px solid #0f0; padding: 8px;"><code>Metasploit</code></td>
+                            <td style="border: 1px solid #0f0; padding: 8px;">Exploitation Framework</td>
+                            <td style="border: 1px solid #0f0; padding: 8px;">msfconsole, search, exploit</td>
+                        </tr>
+                        <tr style="background-color: rgba(0, 30, 0, 0.2);">
+                            <td style="border: 1px solid #0f0; padding: 8px;"><code>Wireshark</code></td>
+                            <td style="border: 1px solid #0f0; padding: 8px;">Network Traffic Analysis</td>
+                            <td style="border: 1px solid #0f0; padding: 8px;">Capture, filter, analyze packets</td>
+                        </tr>
+                        <tr>
+                            <td style="border: 1px solid #0f0; padding: 8px;"><code>John the Ripper</code></td>
+                            <td style="border: 1px solid #0f0; padding: 8px;">Password Cracking</td>
+                            <td style="border: 1px solid #0f0; padding: 8px;">Hash cracking, wordlist attacks</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </section>
+            
+            <section id="exploits" class="content-section">
+                <h2>💥 Exploits Database</h2>
+                <p>Collection of known vulnerabilities and proof-of-concept exploits.</p>
+                
+                <h3>Recent CVE Examples:</h3>
+                <ul>
+                    <li><code>CVE-2023-XXXX</code>: Buffer overflow in web server authentication</li>
+                    <li><code>CVE-2023-YYYY</code>: Remote code execution via crafted packets</li>
+                    <li><code>CVE-2023-ZZZZ</code>: Privilege escalation through kernel driver</li>
+                </ul>
+                
+                <h3>Exploit Development Tips:</h3>
+                <p>Always ensure you have proper authorization before testing exploits. Follow responsible disclosure practices.</p>
+                
+                <div style="margin-top: 20px; padding: 10px; background-color: rgba(100, 0, 0, 0.2); border: 1px solid #f00;">
+                    <p><span class="blink">⚠️</span> WARNING: This information is for educational purposes only. Unauthorized access to computer systems is illegal.</p>
+                </div>
+            </section>
+        </main>
+        
+        <footer>
+            <p>System Wiki v2.0.1 | Last Updated: <span id="date"></span></p>
+            <p>🔒 Encrypted Connection | Access Level: <span style="color:#f0f;">ADMIN</span></p>
+        </footer>
+    </div>
+
+    <script>
+        // Set current date
+        document.getElementById('date').textContent = new Date().toISOString().split('T')[0];
+        
+        // Add terminal-like typing effect to prompt
+        const prompt = document.querySelector('.terminal-prompt');
+        let i = 0;
+        const txt = prompt.textContent.substring(2); // Remove the "> "
+        prompt.textContent = "";
+        
+        function typeWriter() {
+            if (i < txt.length) {
+                prompt.innerHTML += txt.charAt(i);
+                i++;
+                setTimeout(typeWriter, 100);
+            }
+        }
+        
+        window.onload = typeWriter;
+    </script>
 </body>
 </html>
