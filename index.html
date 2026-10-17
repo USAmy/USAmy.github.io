@@ -7,7 +7,7 @@
   <script src="https://cdn.tailwindcss.com"></script>
   <script src="https://unpkg.com/lucide@latest"></script>
   
-  <!-- 引入与目标图完全一致的 Google 现代无衬线字体库 (Inter & Montserrat) -->
+  <!-- 引入与目标图完全一致的现代无衬线字体库 (Inter & Montserrat) -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Montserrat:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
@@ -33,7 +33,7 @@
     }
   </script>
   <style>
-    /* 全局强制统一为您截图中的干净几何无衬线字体 */
+    /* 全局强制统一为现代几何无衬线字体 */
     *, html, body, button, input, select, textarea, h1, h2, h3, h4, p, span, a {
       font-family: "Inter", "Montserrat", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif !important;
       -webkit-font-smoothing: antialiased;
@@ -43,12 +43,6 @@
     body {
       background-color: #ffffff;
       color: #0f172a;
-    }
-
-    /* 还原截图中特有的大写加宽字间距风格 */
-    .wall-title-style {
-      text-transform: uppercase;
-      letter-spacing: 0.12em;
     }
 
     .editorial-card {
@@ -106,21 +100,23 @@
   <!-- 主体内容 -->
   <div class="max-w-[1380px] mx-auto px-4 lg:px-8 py-10 w-full flex-1">
     
-    <!-- Hero 展区介绍 -->
+    <!-- Hero 展区介绍（单行协调排版） -->
     <section class="border-b border-borderSubtle pb-10 mb-8">
-      <div class="flex flex-col md:flex-row md:items-end justify-between gap-6">
-        <div>
-          <span class="text-xs uppercase text-textSecondary tracking-widest font-bold">THE COMMUNITY ARCHIVE</span>
-          <h1 class="text-4xl sm:text-5xl md:text-6xl font-black text-textPrimary mt-3 mb-3 tracking-tight">
+      <div class="flex flex-col lg:flex-row lg:items-end justify-between gap-6">
+        <div class="min-w-0 flex-1">
+          <span class="text-[11px] uppercase text-textSecondary tracking-widest font-bold block mb-1">
+            THE COMMUNITY ARCHIVE
+          </span>
+          <h1 class="text-xl sm:text-3xl lg:text-4xl font-black text-textPrimary my-2 tracking-tight uppercase whitespace-nowrap overflow-x-auto">
             EVERY STYLE DESERVES A PLACE.
           </h1>
-          <p class="text-textSecondary text-sm md:text-base max-w-xl font-normal leading-relaxed">
+          <p class="text-textSecondary text-xs sm:text-sm max-w-2xl font-normal leading-relaxed">
             Discover real styling, liquid gloss highlights, and experimental silhouettes curated from global creators.
           </p>
         </div>
 
         <!-- 导流卡片 -->
-        <a href="#" class="bg-surfaceMuted border border-borderSubtle rounded-2xl p-4 flex items-center justify-between gap-6 hover:border-slate-400 transition-all group max-w-sm w-full">
+        <a href="#" class="bg-surfaceMuted border border-borderSubtle rounded-2xl p-4 flex items-center justify-between gap-6 hover:border-slate-400 transition-all group shrink-0 lg:w-80">
           <div>
             <div class="flex items-center gap-1.5 text-xs text-textPrimary font-bold uppercase tracking-wide">
               <span class="text-accentBlue font-black">＋</span>
@@ -467,7 +463,7 @@
         <a href="https://leohex.art" target="_blank" class="font-bold text-slate-800 hover:underline">LEOHEX.art</a>
         <p class="mt-1 text-[11px] normal-case text-slate-400">© 2016–2026 LEOHEX. All rights reserved. Community content belongs to its respective creators.</p>
       </div>
-      <div class="text-[11px] text-slate-400 text-center md:text-right font-mono">
+      <div class="text-[11px] text-slate-400 text-center md:text-right">
         <div>Theme: Modern Geometric Sans</div>
         <div>v0.4.0 Built 2026-09-14 14:58:15 UTC+7</div>
       </div>
