@@ -1,26 +1,28 @@
 <!DOCTYPE html>
-<html lang="ja" class="dark">
+<html lang="ja">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>LEOHEX Official Art Gallery</title>
+  <title>LEOHEX Official Art Gallery | Editorial White Theme</title>
   <script src="https://cdn.tailwindcss.com"></script>
   <script src="https://unpkg.com/lucide@latest"></script>
   <script>
     tailwind.config = {
-      darkMode: 'class',
       theme: {
         extend: {
           colors: {
-            brandBg: '#09090b',
-            cardBg: '#111217',
-            cardBorder: 'rgba(255, 255, 255, 0.08)',
-            accentBlue: '#2563eb',
-            textMuted: '#94a3b8'
+            themeBg: '#ffffff',
+            surfaceMuted: '#f8fafc',
+            surfaceCard: '#ffffff',
+            borderSubtle: '#e2e8f0',
+            borderStrong: '#cbd5e1',
+            textPrimary: '#0f172a',
+            textSecondary: '#64748b',
+            accentBlue: '#0284c7'
           },
           fontFamily: {
             serifHeading: ['Playfair Display', 'Georgia', 'serif'],
-            monoCode: ['JetBrains Mono', 'Menlo', 'monospace']
+            monoAccent: ['JetBrains Mono', 'Menlo', 'monospace']
           }
         }
       }
@@ -28,427 +30,422 @@
   </script>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;0,800;1,400&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;0,700;0,900;1,400&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
   <style>
     body {
-      background-color: #09090b;
-      color: #f8fafc;
+      background-color: #ffffff;
+      color: #0f172a;
       font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
     }
     .serif-title {
       font-family: 'Playfair Display', Georgia, serif;
       letter-spacing: -0.02em;
     }
-    .mono-accent {
+    .mono-tag {
       font-family: 'JetBrains Mono', monospace;
     }
-    .card-hover {
-      transition: all 0.25s ease;
+    .editorial-card {
+      transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
     }
-    .card-hover:hover {
-      transform: translateY(-2px);
-      border-color: rgba(255, 255, 255, 0.22);
+    .editorial-card:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 16px 32px -8px rgba(15, 23, 42, 0.08);
+      border-color: #94a3b8;
     }
   </style>
 </head>
-<body class="min-h-screen flex flex-col selection:bg-neutral-700 selection:text-white">
+<body class="min-h-screen flex flex-col selection:bg-slate-900 selection:text-white antialiased">
 
-  <!-- 顶部公告与导航条 (Top Header) -->
-  <header class="border-b border-cardBorder bg-[#09090b]/90 backdrop-blur-md sticky top-0 z-40">
+  <!-- 顶部导航条 (Editorial Header) -->
+  <header class="border-b border-borderSubtle bg-white/85 backdrop-blur-md sticky top-0 z-40">
     <div class="max-w-[1380px] mx-auto px-4 lg:px-8 h-16 flex items-center justify-between">
-      <!-- 左侧品牌与主Tab -->
+      <!-- 品牌名与分栏 -->
       <div class="flex items-center space-x-8">
-        <a href="https://leohex.art/" class="text-base font-black tracking-widest text-white flex items-center gap-1.5">
+        <a href="https://leohex.art/" class="text-base font-black tracking-widest text-textPrimary flex items-center gap-1.5">
           <span>LEOHEX</span>
-          <span class="text-neutral-400 font-normal">COMMUNITY</span>
+          <span class="text-textSecondary font-light">ARCHIVE</span>
         </a>
         <nav class="hidden md:flex items-center space-x-6 text-xs uppercase tracking-wider font-semibold">
-          <a href="#" class="text-white border-b-2 border-white pb-4 pt-4 mt-0.5">The wall</a>
-          <a href="#" class="text-neutral-400 hover:text-neutral-200 transition-colors">Lab</a>
+          <a href="#" class="text-textPrimary border-b-2 border-textPrimary pb-4 pt-4 mt-0.5">The Wall</a>
+          <a href="#" class="text-textSecondary hover:text-textPrimary transition-colors">Design Lab</a>
+          <a href="https://leohex.com" target="_blank" class="text-textSecondary hover:text-textPrimary transition-colors flex items-center gap-1">Store <i data-lucide="arrow-up-right" class="w-3 h-3"></i></a>
         </nav>
       </div>
 
-      <!-- 右侧辅助工具栏 -->
-      <div class="flex items-center space-x-5">
-        <!-- 语言选择 -->
+      <!-- 右侧辅助入口 -->
+      <div class="flex items-center space-x-4">
+        <!-- 语言切换 -->
         <div class="relative group hidden sm:block">
-          <button class="text-xs text-neutral-400 hover:text-white flex items-center gap-1 font-medium">
-            <span>Choose language</span>
+          <button class="text-xs text-textSecondary hover:text-textPrimary flex items-center gap-1 font-medium py-1 px-2 rounded-md hover:bg-slate-100 transition-colors">
+            <span>Language</span>
             <i data-lucide="chevron-down" class="w-3.5 h-3.5"></i>
           </button>
-          <div class="absolute right-0 top-full mt-2 w-32 bg-cardBg border border-cardBorder rounded-lg p-1.5 shadow-2xl hidden group-hover:block text-xs">
-            <a href="#" class="block px-3 py-1.5 rounded hover:bg-white/5 text-neutral-300 hover:text-white">English</a>
-            <a href="#" class="block px-3 py-1.5 rounded hover:bg-white/5 text-neutral-300 hover:text-white">中文</a>
-            <a href="#" class="block px-3 py-1.5 rounded bg-white/10 text-white font-medium">日本語</a>
+          <div class="absolute right-0 top-full mt-1 w-32 bg-white border border-borderSubtle rounded-lg p-1.5 shadow-xl hidden group-hover:block text-xs z-50">
+            <a href="#" class="block px-3 py-1.5 rounded hover:bg-slate-50 text-slate-700">English</a>
+            <a href="#" class="block px-3 py-1.5 rounded hover:bg-slate-50 text-slate-700">中文</a>
+            <a href="#" class="block px-3 py-1.5 rounded bg-slate-100 text-slate-900 font-semibold">日本語</a>
           </div>
         </div>
 
-        <!-- Share your look 胶囊按钮 -->
-        <button class="text-xs font-semibold px-4 py-2 rounded-full border border-neutral-700 hover:border-neutral-400 text-neutral-200 hover:text-white transition-colors flex items-center gap-1.5">
+        <!-- 投稿按钮 -->
+        <button class="text-xs font-semibold px-4 py-2 rounded-full border border-slate-900 bg-slate-900 text-white hover:bg-slate-800 transition-all flex items-center gap-1.5 shadow-sm">
+          <i data-lucide="plus" class="w-3.5 h-3.5"></i>
           <span>Share your look</span>
         </button>
       </div>
     </div>
   </header>
 
-  <!-- 主体容器 -->
-  <div class="max-w-[1380px] mx-auto px-4 lg:px-8 py-8 w-full flex-1">
+  <!-- 主体内容 -->
+  <div class="max-w-[1380px] mx-auto px-4 lg:px-8 py-10 w-full flex-1">
     
-    <!-- 标头 Hero 区域 -->
-    <section class="border-b border-cardBorder pb-8 mb-8">
+    <!-- Hero 展区介绍 -->
+    <section class="border-b border-borderSubtle pb-10 mb-8">
       <div class="flex flex-col md:flex-row md:items-end justify-between gap-6">
         <div>
-          <span class="text-[11px] mono-accent uppercase text-neutral-400 tracking-wider">THE COMMUNITY ARCHIVE</span>
-          <h1 class="serif-title text-3xl sm:text-4xl md:text-5xl font-extrabold text-white mt-2 mb-3">
+          <span class="text-[11px] mono-tag uppercase text-textSecondary tracking-widest font-medium">THE COMMUNITY ARCHIVE</span>
+          <h1 class="serif-title text-4xl sm:text-5xl md:text-6xl font-black text-textPrimary mt-3 mb-3">
             Every style deserves a place.
           </h1>
-          <p class="text-neutral-400 text-sm max-w-xl">
-            Discover real looks. Give your ideas a voice.
+          <p class="text-textSecondary text-sm md:text-base max-w-xl leading-relaxed">
+            Discover real editorial styling, liquid gloss highlights, and experimental silhouettes curated from global creators.
           </p>
         </div>
 
-        <!-- 浮层导流：Explore the design lab -->
-        <a href="#" class="bg-cardBg border border-cardBorder rounded-xl p-4 flex items-center justify-between gap-6 hover:border-neutral-500 transition-all group max-w-sm w-full">
+        <!-- 导流卡片 -->
+        <a href="#" class="bg-surfaceMuted border border-borderSubtle rounded-2xl p-4 flex items-center justify-between gap-6 hover:border-slate-400 transition-all group max-w-sm w-full">
           <div>
-            <div class="flex items-center gap-1.5 text-xs text-neutral-300 font-medium">
-              <span class="text-blue-400">＋</span>
+            <div class="flex items-center gap-1.5 text-xs text-textPrimary font-semibold">
+              <span class="text-accentBlue font-bold">＋</span>
               <span>The next design starts with you</span>
             </div>
-            <p class="text-[11px] text-neutral-500 mt-1">Explore the design lab</p>
+            <p class="text-[11px] text-textSecondary mt-1">Explore the design lab</p>
           </div>
-          <i data-lucide="arrow-up-right" class="w-4 h-4 text-neutral-400 group-hover:text-white group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform"></i>
+          <div class="w-8 h-8 rounded-full bg-white border border-borderSubtle flex items-center justify-center text-textPrimary group-hover:bg-slate-900 group-hover:text-white transition-colors">
+            <i data-lucide="arrow-up-right" class="w-4 h-4"></i>
+          </div>
         </a>
       </div>
 
-      <!-- 分类切页与搜索栏 (Collected looks / Videos / Community) -->
-      <div class="mt-10 flex flex-col md:flex-row md:items-center justify-between gap-4 pt-4 border-t border-cardBorder/60">
-        <!-- 主切换标签 -->
-        <div class="flex items-center space-x-6 text-sm font-semibold">
-          <button class="text-white border-b-2 border-white pb-2 -mb-2">Collected looks</button>
-          <button class="text-neutral-500 hover:text-neutral-300 transition-colors pb-2">Videos</button>
-          <button class="text-neutral-500 hover:text-neutral-300 transition-colors pb-2">Community</button>
+      <!-- 分主题选项卡 (Theme Tabs) -->
+      <div class="mt-10 flex flex-col md:flex-row md:items-center justify-between gap-4 pt-6 border-t border-borderSubtle">
+        <!-- 核心主题选择 -->
+        <div class="flex items-center space-x-2 overflow-x-auto pb-2 md:pb-0 scrollbar-none text-xs font-semibold">
+          <button class="theme-tab-btn px-4 py-2 rounded-full bg-slate-900 text-white" onclick="filterTheme('all', this)">All Themes</button>
+          <button class="theme-tab-btn px-4 py-2 rounded-full bg-slate-100 hover:bg-slate-200 text-slate-700 transition-colors" onclick="filterTheme('liquid-gloss', this)">Liquid Gloss</button>
+          <button class="theme-tab-btn px-4 py-2 rounded-full bg-slate-100 hover:bg-slate-200 text-slate-700 transition-colors" onclick="filterTheme('racing-cut', this)">競泳・Racing Cut</button>
+          <button class="theme-tab-btn px-4 py-2 rounded-full bg-slate-100 hover:bg-slate-200 text-slate-700 transition-colors" onclick="filterTheme('sheer-mesh', this)">Sheer & Mesh</button>
+          <button class="theme-tab-btn px-4 py-2 rounded-full bg-slate-100 hover:bg-slate-200 text-slate-700 transition-colors" onclick="filterTheme('studio-shoot', this)">Studio Lookbook</button>
         </div>
 
-        <!-- 搜索与筛选排序 -->
-        <div class="flex items-center space-x-4 text-xs">
-          <div class="relative w-full sm:w-64">
-            <i data-lucide="search" class="w-3.5 h-3.5 absolute left-3 top-2.5 text-neutral-500"></i>
-            <input type="text" placeholder="Search creators or captions" class="w-full bg-[#14151b] border border-cardBorder rounded-md pl-8 pr-3 py-2 text-neutral-200 placeholder-neutral-500 focus:outline-none focus:border-neutral-400">
+        <!-- 搜索与排序 -->
+        <div class="flex items-center space-x-3 text-xs">
+          <div class="relative w-full sm:w-60">
+            <i data-lucide="search" class="w-3.5 h-3.5 absolute left-3 top-2.5 text-textSecondary"></i>
+            <input type="text" id="filterSearch" placeholder="Filter creator or keyword..." class="w-full bg-surfaceMuted border border-borderSubtle rounded-full pl-8 pr-3 py-2 text-textPrimary placeholder-textSecondary focus:outline-none focus:border-slate-400">
           </div>
           
-          <div class="flex items-center space-x-2 text-neutral-400">
-            <span class="hidden sm:inline">Sort looks</span>
-            <div class="flex items-center bg-[#14151b] border border-cardBorder rounded-md p-0.5 text-[11px]">
-              <button class="px-2.5 py-1 rounded bg-neutral-800 text-white font-medium">Trending</button>
-              <button class="px-2.5 py-1 rounded text-neutral-400 hover:text-white">Date</button>
-              <button class="px-2.5 py-1 rounded text-neutral-400 hover:text-white">Popular</button>
-            </div>
+          <div class="flex items-center bg-surfaceMuted border border-borderSubtle rounded-full p-1 text-[11px] mono-tag">
+            <button class="px-2.5 py-1 rounded-full bg-white shadow-xs text-textPrimary font-semibold">Trending</button>
+            <button class="px-2.5 py-1 rounded-full text-textSecondary hover:text-textPrimary">Date</button>
+            <button class="px-2.5 py-1 rounded-full text-textSecondary hover:text-textPrimary">Popular</button>
           </div>
         </div>
       </div>
 
-      <!-- 计数与排行榜快捷跳转 -->
-      <div class="mt-4 flex items-center justify-between text-xs text-neutral-500 mono-accent">
-        <div>THE COMMUNITY ARCHIVE <span class="text-neutral-300">1,077 Posts</span></div>
-        <a href="#rankings" class="hover:text-neutral-300 flex items-center gap-1">Wall Rankings ↗</a>
+      <!-- 计数 -->
+      <div class="mt-4 flex items-center justify-between text-xs text-textSecondary mono-tag">
+        <div>THE COMMUNITY ARCHIVE <span class="text-textPrimary font-semibold">1,077 Posts</span></div>
+        <a href="#rankings" class="hover:text-textPrimary flex items-center gap-1 font-medium">Wall Rankings ↗</a>
       </div>
     </section>
 
-    <!-- 画廊卡片网格 (The Grid) -->
-    <main class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-5" id="galleryContainer">
+    <!-- 卡片画廊 (Editorial Masonry Grid) -->
+    <main class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6" id="themeGallery">
       
-      <!-- Card 1 -->
-      <div class="bg-cardBg border border-cardBorder rounded-lg overflow-hidden flex flex-col card-hover">
-        <div class="relative aspect-[4/5] bg-neutral-900 overflow-hidden">
+      <!-- Card 1: Liquid Gloss -->
+      <div class="editorial-card bg-surfaceCard border border-borderSubtle rounded-xl overflow-hidden flex flex-col" data-theme="liquid-gloss">
+        <div class="relative aspect-[4/5] bg-slate-100 overflow-hidden">
           <img src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?auto=format&fit=crop&w=700&q=80" alt="南ななせ" class="w-full h-full object-cover">
-          <div class="absolute bottom-2.5 right-2.5 bg-black/70 backdrop-blur-md px-2 py-0.5 rounded text-[11px] mono-accent text-white flex items-center gap-1">
-            <i data-lucide="heart" class="w-3 h-3 text-red-500 fill-red-500"></i>
-            <span>0</span>
-          </div>
-        </div>
-        <div class="p-3.5 flex flex-col justify-between flex-1">
-          <p class="text-xs text-neutral-300 line-clamp-2 leading-relaxed">
-            ちょっと着崩れ☺️ @nanase230230 南ななせさん#南ななせ #ツヤてか #LEOHEX
-          </p>
-          <div class="mt-3 pt-2.5 border-t border-cardBorder flex items-center justify-between text-[11px] text-neutral-400">
-            <span class="font-medium text-neutral-300">ツチノコ</span>
-            <span class="mono-accent text-neutral-500">X · Collected looks</span>
-          </div>
-        </div>
-      </div>
-
-      <!-- Card 2 -->
-      <div class="bg-cardBg border border-cardBorder rounded-lg overflow-hidden flex flex-col card-hover">
-        <div class="relative aspect-[4/5] bg-neutral-900 overflow-hidden">
-          <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=700&q=80" alt="由良かな" class="w-full h-full object-cover">
-          <div class="absolute bottom-2.5 right-2.5 bg-black/70 backdrop-blur-md px-2 py-0.5 rounded text-[11px] mono-accent text-white flex items-center gap-1">
-            <i data-lucide="heart" class="w-3 h-3 text-neutral-400"></i>
-            <span>0</span>
-          </div>
-        </div>
-        <div class="p-3.5 flex flex-col justify-between flex-1">
-          <p class="text-xs text-neutral-300 line-clamp-2 leading-relaxed">
-            2026.09.12 SPLASH SUMMER -Happy Yellow Edition in 川越由良かなさん@yura_kana_
-          </p>
-          <div class="mt-3 pt-2.5 border-t border-cardBorder flex items-center justify-between text-[11px] text-neutral-400">
-            <span class="font-medium text-neutral-300">たろう</span>
-            <span class="mono-accent text-neutral-500">X · Collected looks</span>
-          </div>
-        </div>
-      </div>
-
-      <!-- Card 3 -->
-      <div class="bg-cardBg border border-cardBorder rounded-lg overflow-hidden flex flex-col card-hover">
-        <div class="relative aspect-[4/5] bg-neutral-900 overflow-hidden">
-          <img src="https://images.unsplash.com/photo-1517841905240-472988babdf9?auto=format&fit=crop&w=700&q=80" alt="めぽさん" class="w-full h-full object-cover">
-          <div class="absolute bottom-2.5 right-2.5 bg-black/70 backdrop-blur-md px-2 py-0.5 rounded text-[11px] mono-accent text-white flex items-center gap-1">
-            <i data-lucide="heart" class="w-3 h-3 text-neutral-400"></i>
-            <span>0</span>
-          </div>
-        </div>
-        <div class="p-3.5 flex flex-col justify-between flex-1">
-          <p class="text-xs text-neutral-300 line-clamp-2 leading-relaxed">
-            めぽさん×競泳×プール🌻 モデル：めぽさん（@oyasumimepomepo）
-          </p>
-          <div class="mt-3 pt-2.5 border-t border-cardBorder flex items-center justify-between text-[11px] text-neutral-400">
-            <span class="font-medium text-neutral-300">さっちぃ@推し活&写真</span>
-            <span class="mono-accent text-neutral-500">X · Collected looks</span>
-          </div>
-        </div>
-      </div>
-
-      <!-- Card 4: 特别卡片 01 / DESIGN NOTES (原站真实模块) -->
-      <div class="bg-[#121319] border border-blue-900/40 rounded-lg p-6 flex flex-col justify-between card-hover relative overflow-hidden">
-        <div class="absolute -right-8 -top-8 w-32 h-32 bg-blue-600/10 rounded-full blur-2xl pointer-events-none"></div>
-        <div>
-          <span class="text-[11px] mono-accent uppercase text-blue-400">01 / DESIGN NOTES</span>
-          <h2 class="serif-title text-xl font-bold text-white mt-3 leading-snug">
-            Good design starts with “what if”.
-          </h2>
-          <p class="text-xs text-neutral-400 mt-3 leading-relaxed">
-            A different color. A better fit. A new possibility. Tell us what silhouette or cut you desire next.
-          </p>
-        </div>
-        <a href="https://leohex.com/" target="_blank" class="pt-6 border-t border-cardBorder text-xs text-neutral-300 hover:text-white flex items-center justify-between font-medium">
-          <span>Suggest a design</span>
-          <span>↗</span>
-        </a>
-      </div>
-
-      <!-- Card 5 -->
-      <div class="bg-cardBg border border-cardBorder rounded-lg overflow-hidden flex flex-col card-hover">
-        <div class="relative aspect-[4/5] bg-neutral-900 overflow-hidden">
-          <img src="https://images.unsplash.com/photo-1524504388940-b1c1722653e1?auto=format&fit=crop&w=700&q=80" alt="むなちゃん" class="w-full h-full object-cover">
-          <div class="absolute bottom-2.5 right-2.5 bg-black/70 backdrop-blur-md px-2 py-0.5 rounded text-[11px] mono-accent text-white flex items-center gap-1">
-            <i data-lucide="heart" class="w-3 h-3 text-red-500 fill-red-500"></i>
-            <span>1</span>
-          </div>
-        </div>
-        <div class="p-3.5 flex flex-col justify-between flex-1">
-          <p class="text-xs text-neutral-300 line-clamp-2 leading-relaxed">
-            【NTE Cosplay/ネバエバコスプレ】*同人衣装注意 Neverness to Everness
-          </p>
-          <div class="mt-3 pt-2.5 border-t border-cardBorder flex items-center justify-between text-[11px] text-neutral-400">
-            <span class="font-medium text-neutral-300">むなちゃん。C108</span>
-            <span class="mono-accent text-neutral-500">X · Collected looks</span>
-          </div>
-        </div>
-      </div>
-
-      <!-- Card 6 -->
-      <div class="bg-cardBg border border-cardBorder rounded-lg overflow-hidden flex flex-col card-hover">
-        <div class="relative aspect-[4/5] bg-neutral-900 overflow-hidden">
-          <img src="https://images.unsplash.com/photo-1529626455594-4ff0802cfb7e?auto=format&fit=crop&w=700&q=80" alt="フレッシュフォトセッション" class="w-full h-full object-cover">
-          <div class="absolute bottom-2.5 right-2.5 bg-black/70 backdrop-blur-md px-2 py-0.5 rounded text-[11px] mono-accent text-white flex items-center gap-1">
-            <i data-lucide="heart" class="w-3 h-3 text-neutral-400"></i>
-            <span>0</span>
-          </div>
-        </div>
-        <div class="p-3.5 flex flex-col justify-between flex-1">
-          <p class="text-xs text-neutral-300 line-clamp-2 leading-relaxed">
-            2026/09/19(土)【フレッシュフォトセッション / ＃～フェス】
-          </p>
-          <div class="mt-3 pt-2.5 border-t border-cardBorder flex items-center justify-between text-[11px] text-neutral-400">
-            <span class="font-medium text-neutral-300">フレッシュ撮影会/出演者情報</span>
-            <span class="mono-accent text-neutral-500">X · Collected looks</span>
-          </div>
-        </div>
-      </div>
-
-      <!-- Card 7 -->
-      <div class="bg-cardBg border border-cardBorder rounded-lg overflow-hidden flex flex-col card-hover">
-        <div class="relative aspect-[4/5] bg-neutral-900 overflow-hidden">
-          <img src="https://images.unsplash.com/photo-1508214751196-bcfd4ca60f91?auto=format&fit=crop&w=700&q=80" alt="南ななせ" class="w-full h-full object-cover">
-          <div class="absolute bottom-2.5 right-2.5 bg-black/70 backdrop-blur-md px-2 py-0.5 rounded text-[11px] mono-accent text-white flex items-center gap-1">
-            <i data-lucide="heart" class="w-3 h-3 text-red-500 fill-red-500"></i>
+          <span class="absolute top-3 left-3 bg-white/90 backdrop-blur-md px-2.5 py-1 rounded-md text-[10px] mono-tag font-semibold text-slate-800 border border-slate-200">
+            LIQUID GLOSS
+          </span>
+          <div class="absolute bottom-3 right-3 bg-white/90 backdrop-blur-md px-2.5 py-1 rounded-full text-xs font-semibold text-slate-900 flex items-center gap-1.5 shadow-sm">
+            <i data-lucide="heart" class="w-3.5 h-3.5 text-rose-500 fill-rose-500"></i>
             <span>4</span>
           </div>
         </div>
-        <div class="p-3.5 flex flex-col justify-between flex-1">
-          <p class="text-xs text-neutral-300 line-clamp-2 leading-relaxed">
-            Gスタ個撮！雨の中ありがとうございました☔️ 心配でしたが最高の光沢感✨
+        <div class="p-4 flex flex-col justify-between flex-1">
+          <p class="text-xs text-slate-800 font-medium line-clamp-2 leading-relaxed">
+            ちょっと着崩れ☺️ @nanase230230 南ななせさん #南ななせ #ツヤてか #LEOHEX
           </p>
-          <div class="mt-3 pt-2.5 border-t border-cardBorder flex items-center justify-between text-[11px] text-neutral-400">
-            <span class="font-medium text-neutral-300">南ななせ🐈</span>
-            <span class="mono-accent text-neutral-500">X · Collected looks</span>
+          <div class="mt-4 pt-3 border-t border-slate-100 flex items-center justify-between text-[11px] text-textSecondary">
+            <span class="font-bold text-slate-900">ツチノコ</span>
+            <span class="mono-tag text-slate-400">X · Collected looks</span>
           </div>
         </div>
       </div>
 
-      <!-- Card 8 -->
-      <div class="bg-cardBg border border-cardBorder rounded-lg overflow-hidden flex flex-col card-hover">
-        <div class="relative aspect-[4/5] bg-neutral-900 overflow-hidden">
-          <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&w=700&q=80" alt="朝比奈りる" class="w-full h-full object-cover">
-          <div class="absolute bottom-2.5 right-2.5 bg-black/70 backdrop-blur-md px-2 py-0.5 rounded text-[11px] mono-accent text-white flex items-center gap-1">
-            <i data-lucide="heart" class="w-3 h-3 text-neutral-400"></i>
+      <!-- Card 2: Racing Cut -->
+      <div class="editorial-card bg-surfaceCard border border-borderSubtle rounded-xl overflow-hidden flex flex-col" data-theme="racing-cut">
+        <div class="relative aspect-[4/5] bg-slate-100 overflow-hidden">
+          <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=700&q=80" alt="由良かな" class="w-full h-full object-cover">
+          <span class="absolute top-3 left-3 bg-white/90 backdrop-blur-md px-2.5 py-1 rounded-md text-[10px] mono-tag font-semibold text-slate-800 border border-slate-200">
+            RACING CUT
+          </span>
+          <div class="absolute bottom-3 right-3 bg-white/90 backdrop-blur-md px-2.5 py-1 rounded-full text-xs font-semibold text-slate-900 flex items-center gap-1.5 shadow-sm">
+            <i data-lucide="heart" class="w-3.5 h-3.5 text-slate-400"></i>
             <span>0</span>
           </div>
         </div>
-        <div class="p-3.5 flex flex-col justify-between flex-1">
-          <p class="text-xs text-neutral-300 line-clamp-2 leading-relaxed">
-            smooth撮影会ご予約してくれた方ありがとうございました☺️！ サイバー感ある新作水着。
+        <div class="p-4 flex flex-col justify-between flex-1">
+          <p class="text-xs text-slate-800 font-medium line-clamp-2 leading-relaxed">
+            2026.09.12 SPLASH SUMMER - Happy Yellow Edition in 川越水上公園 由良かなさん
           </p>
-          <div class="mt-3 pt-2.5 border-t border-cardBorder flex items-center justify-between text-[11px] text-neutral-400">
-            <span class="font-medium text-neutral-300">朝比奈りる‎</span>
-            <span class="mono-accent text-neutral-500">X · Collected looks</span>
+          <div class="mt-4 pt-3 border-t border-slate-100 flex items-center justify-between text-[11px] text-textSecondary">
+            <span class="font-bold text-slate-900">たろう</span>
+            <span class="mono-tag text-slate-400">X · Collected looks</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Card 3: Sheer & Mesh -->
+      <div class="editorial-card bg-surfaceCard border border-borderSubtle rounded-xl overflow-hidden flex flex-col" data-theme="sheer-mesh">
+        <div class="relative aspect-[4/5] bg-slate-100 overflow-hidden">
+          <img src="https://images.unsplash.com/photo-1517841905240-472988babdf9?auto=format&fit=crop&w=700&q=80" alt="めぽさん" class="w-full h-full object-cover">
+          <span class="absolute top-3 left-3 bg-white/90 backdrop-blur-md px-2.5 py-1 rounded-md text-[10px] mono-tag font-semibold text-slate-800 border border-slate-200">
+            SHEER & MESH
+          </span>
+          <div class="absolute bottom-3 right-3 bg-white/90 backdrop-blur-md px-2.5 py-1 rounded-full text-xs font-semibold text-slate-900 flex items-center gap-1.5 shadow-sm">
+            <i data-lucide="heart" class="w-3.5 h-3.5 text-slate-400"></i>
+            <span>2</span>
+          </div>
+        </div>
+        <div class="p-4 flex flex-col justify-between flex-1">
+          <p class="text-xs text-slate-800 font-medium line-clamp-2 leading-relaxed">
+            めぽさん×競泳×プール🌻 濡れ感と透け感ハイライトのコントラスト。
+          </p>
+          <div class="mt-4 pt-3 border-t border-slate-100 flex items-center justify-between text-[11px] text-textSecondary">
+            <span class="font-bold text-slate-900">さっちぃ@推し活</span>
+            <span class="mono-tag text-slate-400">X · Collected looks</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Card 4: 白底极简特别卡片 DESIGN NOTES -->
+      <div class="bg-slate-50 border border-slate-300 rounded-xl p-6 flex flex-col justify-between editorial-card">
+        <div>
+          <span class="text-[11px] mono-tag uppercase text-slate-500 font-semibold tracking-wider">01 / DESIGN NOTES</span>
+          <h2 class="serif-title text-2xl font-bold text-slate-900 mt-3 leading-snug">
+            Good design starts with “what if”.
+          </h2>
+          <p class="text-xs text-slate-600 mt-3 leading-relaxed">
+            A different color. A better fit. A new liquid reflection possibility. Suggest your ideal cuts and custom colorways.
+          </p>
+        </div>
+        <a href="https://leohex.com/" target="_blank" class="pt-6 border-t border-slate-200 text-xs text-slate-900 hover:text-accentBlue flex items-center justify-between font-semibold">
+          <span>Suggest a design</span>
+          <i data-lucide="arrow-up-right" class="w-4 h-4"></i>
+        </a>
+      </div>
+
+      <!-- Card 5: Studio Lookbook -->
+      <div class="editorial-card bg-surfaceCard border border-borderSubtle rounded-xl overflow-hidden flex flex-col" data-theme="studio-shoot">
+        <div class="relative aspect-[4/5] bg-slate-100 overflow-hidden">
+          <img src="https://images.unsplash.com/photo-1524504388940-b1c1722653e1?auto=format&fit=crop&w=700&q=80" alt="むなちゃん" class="w-full h-full object-cover">
+          <span class="absolute top-3 left-3 bg-white/90 backdrop-blur-md px-2.5 py-1 rounded-md text-[10px] mono-tag font-semibold text-slate-800 border border-slate-200">
+            STUDIO LOOKBOOK
+          </span>
+          <div class="absolute bottom-3 right-3 bg-white/90 backdrop-blur-md px-2.5 py-1 rounded-full text-xs font-semibold text-slate-900 flex items-center gap-1.5 shadow-sm">
+            <i data-lucide="heart" class="w-3.5 h-3.5 text-rose-500 fill-rose-500"></i>
+            <span>1</span>
+          </div>
+        </div>
+        <div class="p-4 flex flex-col justify-between flex-1">
+          <p class="text-xs text-slate-800 font-medium line-clamp-2 leading-relaxed">
+            【NTE Cosplay/ネバエバコスプレ】*同人衣装注意 Neverness to Everness
+          </p>
+          <div class="mt-4 pt-3 border-t border-slate-100 flex items-center justify-between text-[11px] text-textSecondary">
+            <span class="font-bold text-slate-900">むなちゃん。C108</span>
+            <span class="mono-tag text-slate-400">X · Collected looks</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Card 6: Studio Lookbook -->
+      <div class="editorial-card bg-surfaceCard border border-borderSubtle rounded-xl overflow-hidden flex flex-col" data-theme="studio-shoot">
+        <div class="relative aspect-[4/5] bg-slate-100 overflow-hidden">
+          <img src="https://images.unsplash.com/photo-1529626455594-4ff0802cfb7e?auto=format&fit=crop&w=700&q=80" alt="フレッシュフォトセッション" class="w-full h-full object-cover">
+          <span class="absolute top-3 left-3 bg-white/90 backdrop-blur-md px-2.5 py-1 rounded-md text-[10px] mono-tag font-semibold text-slate-800 border border-slate-200">
+            STUDIO LOOKBOOK
+          </span>
+          <div class="absolute bottom-3 right-3 bg-white/90 backdrop-blur-md px-2.5 py-1 rounded-full text-xs font-semibold text-slate-900 flex items-center gap-1.5 shadow-sm">
+            <i data-lucide="heart" class="w-3.5 h-3.5 text-slate-400"></i>
+            <span>0</span>
+          </div>
+        </div>
+        <div class="p-4 flex flex-col justify-between flex-1">
+          <p class="text-xs text-slate-800 font-medium line-clamp-2 leading-relaxed">
+            2026/09/19(土)【フレッシュフォトセッション / ＃～フェス】
+          </p>
+          <div class="mt-4 pt-3 border-t border-slate-100 flex items-center justify-between text-[11px] text-textSecondary">
+            <span class="font-bold text-slate-900">フレッシュ撮影会</span>
+            <span class="mono-tag text-slate-400">X · Collected looks</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Card 7: Liquid Gloss -->
+      <div class="editorial-card bg-surfaceCard border border-borderSubtle rounded-xl overflow-hidden flex flex-col" data-theme="liquid-gloss">
+        <div class="relative aspect-[4/5] bg-slate-100 overflow-hidden">
+          <img src="https://images.unsplash.com/photo-1508214751196-bcfd4ca60f91?auto=format&fit=crop&w=700&q=80" alt="南ななせ" class="w-full h-full object-cover">
+          <span class="absolute top-3 left-3 bg-white/90 backdrop-blur-md px-2.5 py-1 rounded-md text-[10px] mono-tag font-semibold text-slate-800 border border-slate-200">
+            LIQUID GLOSS
+          </span>
+          <div class="absolute bottom-3 right-3 bg-white/90 backdrop-blur-md px-2.5 py-1 rounded-full text-xs font-semibold text-slate-900 flex items-center gap-1.5 shadow-sm">
+            <i data-lucide="heart" class="w-3.5 h-3.5 text-rose-500 fill-rose-500"></i>
+            <span>4</span>
+          </div>
+        </div>
+        <div class="p-4 flex flex-col justify-between flex-1">
+          <p class="text-xs text-slate-800 font-medium line-clamp-2 leading-relaxed">
+            Gスタ個撮！雨の中ありがとうございました☔️ 最高の光沢感と美しい反射。
+          </p>
+          <div class="mt-4 pt-3 border-t border-slate-100 flex items-center justify-between text-[11px] text-textSecondary">
+            <span class="font-bold text-slate-900">南ななせ🐈</span>
+            <span class="mono-tag text-slate-400">X · Collected looks</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Card 8: Racing Cut -->
+      <div class="editorial-card bg-surfaceCard border border-borderSubtle rounded-xl overflow-hidden flex flex-col" data-theme="racing-cut">
+        <div class="relative aspect-[4/5] bg-slate-100 overflow-hidden">
+          <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&w=700&q=80" alt="朝比奈りる" class="w-full h-full object-cover">
+          <span class="absolute top-3 left-3 bg-white/90 backdrop-blur-md px-2.5 py-1 rounded-md text-[10px] mono-tag font-semibold text-slate-800 border border-slate-200">
+            RACING CUT
+          </span>
+          <div class="absolute bottom-3 right-3 bg-white/90 backdrop-blur-md px-2.5 py-1 rounded-full text-xs font-semibold text-slate-900 flex items-center gap-1.5 shadow-sm">
+            <i data-lucide="heart" class="w-3.5 h-3.5 text-slate-400"></i>
+            <span>0</span>
+          </div>
+        </div>
+        <div class="p-4 flex flex-col justify-between flex-1">
+          <p class="text-xs text-slate-800 font-medium line-clamp-2 leading-relaxed">
+            smooth撮影会ご予約ありがとうございました！ 2640番のコントラストストライプ。
+          </p>
+          <div class="mt-4 pt-3 border-t border-slate-100 flex items-center justify-between text-[11px] text-textSecondary">
+            <span class="font-bold text-slate-900">朝比奈りる‎</span>
+            <span class="mono-tag text-slate-400">X · Collected looks</span>
           </div>
         </div>
       </div>
 
     </main>
 
-    <!-- 加载更多按钮 (Load more looks) -->
+    <!-- 加载更多 -->
     <div class="mt-12 text-center">
-      <button class="mono-accent text-xs px-6 py-3 border border-cardBorder rounded-full text-neutral-400 hover:text-white hover:border-neutral-500 transition-colors inline-flex items-center gap-2">
+      <button class="mono-tag text-xs font-semibold px-6 py-3 border border-slate-300 rounded-full text-slate-800 hover:bg-slate-900 hover:text-white hover:border-slate-900 transition-colors inline-flex items-center gap-2">
         <span>Load more looks</span>
         <span>↓</span>
       </button>
     </div>
 
-    <!-- 社区排行区 (Wall Rankings) -->
-    <section id="rankings" class="mt-20 pt-10 border-t border-cardBorder">
+    <!-- 白色排版风格的 Wall Rankings 区域 -->
+    <section id="rankings" class="mt-20 pt-10 border-t border-borderSubtle">
       <div class="flex flex-col md:flex-row md:items-end justify-between gap-4 mb-6">
         <div>
-          <span class="text-[11px] mono-accent uppercase text-neutral-400">COMMUNITY VOTES</span>
-          <h2 class="serif-title text-2xl font-bold text-white mt-1">Wall Rankings</h2>
+          <span class="text-[11px] mono-tag uppercase text-textSecondary font-medium">COMMUNITY VOTES</span>
+          <h2 class="serif-title text-2xl font-bold text-textPrimary mt-1">Wall Rankings</h2>
         </div>
 
-        <div class="flex items-center space-x-6 text-xs mono-accent">
-          <div class="flex items-center space-x-4 text-neutral-400">
-            <span class="text-white border-b border-white pb-0.5">All</span>
-            <span class="hover:text-white cursor-pointer">Community</span>
-            <span class="hover:text-white cursor-pointer">Official</span>
+        <div class="flex items-center space-x-6 text-xs mono-tag">
+          <div class="flex items-center space-x-4 text-textSecondary">
+            <span class="text-textPrimary font-bold border-b border-textPrimary pb-0.5">All</span>
+            <span class="hover:text-textPrimary cursor-pointer">Community</span>
+            <span class="hover:text-textPrimary cursor-pointer">Official</span>
           </div>
-          <div class="h-3 w-px bg-cardBorder"></div>
-          <div class="flex items-center space-x-3 text-neutral-500">
-            <span class="text-neutral-200">This Month</span>
-            <span class="hover:text-neutral-200 cursor-pointer">Last Month</span>
-            <span class="hover:text-neutral-200 cursor-pointer">Yearly</span>
+          <div class="h-3 w-px bg-borderSubtle"></div>
+          <div class="flex items-center space-x-3 text-textSecondary">
+            <span class="text-textPrimary font-semibold">This Month</span>
+            <span class="hover:text-textPrimary cursor-pointer">Last Month</span>
+            <span class="hover:text-textPrimary cursor-pointer">Yearly</span>
           </div>
         </div>
       </div>
 
-      <!-- 排行榜清单 (01-05) -->
-      <div class="divide-y divide-cardBorder/60 border-y border-cardBorder/60 font-mono text-xs">
-        <!-- 01 -->
-        <div class="py-3.5 flex items-center justify-between group">
+      <!-- 排行榜清单 -->
+      <div class="divide-y divide-borderSubtle border-y border-borderSubtle font-mono text-xs">
+        <div class="py-3.5 flex items-center justify-between group hover:bg-slate-50 px-2 transition-colors">
           <div class="flex items-center space-x-4">
-            <span class="text-neutral-500 font-bold w-6">01</span>
-            <span class="text-white font-medium">南ななせ🐈</span>
-            <span class="text-neutral-500 text-[11px]">@nanase230230</span>
+            <span class="text-slate-400 font-bold w-6">01</span>
+            <span class="text-slate-900 font-semibold">南ななせ🐈</span>
+            <span class="text-slate-400 text-[11px]">@nanase230230</span>
           </div>
           <div class="flex items-center space-x-4">
-            <span class="text-neutral-300">4 votes</span>
-            <a href="#" class="text-neutral-500 group-hover:text-white">↗</a>
-          </div>
-        </div>
-
-        <!-- 02 -->
-        <div class="py-3.5 flex items-center justify-between group">
-          <div class="flex items-center space-x-4">
-            <span class="text-neutral-500 font-bold w-6">02</span>
-            <span class="text-white font-medium">L</span>
-            <span class="text-neutral-500 text-[11px]">@LCM0S</span>
-          </div>
-          <div class="flex items-center space-x-4">
-            <span class="text-neutral-300">4 votes</span>
-            <a href="#" class="text-neutral-500 group-hover:text-white">↗</a>
+            <span class="text-slate-700 font-medium">4 votes</span>
+            <a href="#" class="text-slate-400 group-hover:text-slate-900">↗</a>
           </div>
         </div>
 
-        <!-- 03 -->
-        <div class="py-3.5 flex items-center justify-between group">
+        <div class="py-3.5 flex items-center justify-between group hover:bg-slate-50 px-2 transition-colors">
           <div class="flex items-center space-x-4">
-            <span class="text-neutral-500 font-bold w-6">03</span>
-            <span class="text-white font-medium">むなちゃん。C108（土）西ほ-26ab</span>
-            <span class="text-neutral-500 text-[11px]">@nme_w_mdni1</span>
+            <span class="text-slate-400 font-bold w-6">02</span>
+            <span class="text-slate-900 font-semibold">L</span>
+            <span class="text-slate-400 text-[11px]">@LCM0S</span>
           </div>
           <div class="flex items-center space-x-4">
-            <span class="text-neutral-300">1 vote</span>
-            <a href="#" class="text-neutral-500 group-hover:text-white">↗</a>
-          </div>
-        </div>
-
-        <!-- 04 -->
-        <div class="py-3.5 flex items-center justify-between group">
-          <div class="flex items-center space-x-4">
-            <span class="text-neutral-500 font-bold w-6">04</span>
-            <span class="text-white font-medium">まあるの日常</span>
-            <span class="text-neutral-500 text-[11px]">@maaru22081</span>
-          </div>
-          <div class="flex items-center space-x-4">
-            <span class="text-neutral-300">1 vote</span>
-            <a href="#" class="text-neutral-500 group-hover:text-white">↗</a>
+            <span class="text-slate-700 font-medium">4 votes</span>
+            <a href="#" class="text-slate-400 group-hover:text-slate-900">↗</a>
           </div>
         </div>
 
-        <!-- 05 -->
-        <div class="py-3.5 flex items-center justify-between group">
+        <div class="py-3.5 flex items-center justify-between group hover:bg-slate-50 px-2 transition-colors">
           <div class="flex items-center space-x-4">
-            <span class="text-neutral-500 font-bold w-6">05</span>
-            <span class="text-white font-medium">みっつ📸4K グラビア</span>
-            <span class="text-neutral-500 text-[11px]">@yuyuyutam1</span>
+            <span class="text-slate-400 font-bold w-6">03</span>
+            <span class="text-slate-900 font-semibold">むなちゃん。C108（土）西ほ-26ab</span>
+            <span class="text-slate-400 text-[11px]">@nme_w_mdni1</span>
           </div>
           <div class="flex items-center space-x-4">
-            <span class="text-neutral-300">1 vote</span>
-            <a href="#" class="text-neutral-500 group-hover:text-white">↗</a>
+            <span class="text-slate-700 font-medium">1 vote</span>
+            <a href="#" class="text-slate-400 group-hover:text-slate-900">↗</a>
           </div>
         </div>
       </div>
     </section>
 
     <!-- 底部邀请 (An Open Invitation) -->
-    <section class="mt-20 py-16 border-t border-cardBorder text-center">
-      <span class="text-[11px] mono-accent uppercase text-neutral-400 tracking-wider">AN OPEN INVITATION</span>
-      <h2 class="serif-title text-3xl sm:text-4xl font-extrabold text-white mt-2 mb-6">
+    <section class="mt-20 py-16 border-t border-borderSubtle text-center">
+      <span class="text-[11px] mono-tag uppercase text-textSecondary tracking-wider font-medium">AN OPEN INVITATION</span>
+      <h2 class="serif-title text-3xl sm:text-4xl font-extrabold text-slate-900 mt-2 mb-6">
         REAL PEOPLE.<br>REAL LOOKS.
       </h2>
       <div class="flex items-center justify-center space-x-4 text-xs font-semibold">
-        <button class="bg-white text-black px-5 py-2.5 rounded-full hover:bg-neutral-200 transition-colors flex items-center gap-1">
+        <button class="bg-slate-900 text-white px-5 py-2.5 rounded-full hover:bg-slate-800 transition-colors flex items-center gap-1 shadow-sm">
           <span>Share your look</span>
           <span>↗</span>
         </button>
-        <a href="https://leohex.com/" target="_blank" class="border border-cardBorder text-neutral-300 px-5 py-2.5 rounded-full hover:border-neutral-500 transition-colors flex items-center gap-1">
+        <a href="https://leohex.com/" target="_blank" class="border border-slate-300 text-slate-800 px-5 py-2.5 rounded-full hover:border-slate-900 transition-colors flex items-center gap-1">
           <span>Suggest a design</span>
           <span>↗</span>
         </a>
       </div>
 
-      <!-- 数据统计栏 (Stats) -->
-      <div class="mt-12 flex justify-center items-center space-x-8 sm:space-x-16 text-neutral-400 mono-accent text-xs">
+      <!-- 统计指标 -->
+      <div class="mt-12 flex justify-center items-center space-x-8 sm:space-x-16 text-slate-500 mono-tag text-xs">
         <div>
-          <span class="text-base font-bold text-white block">1,106</span>
-          <span class="text-[11px] text-neutral-500">Posts</span>
+          <span class="text-base font-bold text-slate-900 block">1,106</span>
+          <span class="text-[11px] text-slate-400">Posts</span>
         </div>
-        <div class="h-6 w-px bg-cardBorder"></div>
+        <div class="h-6 w-px bg-borderSubtle"></div>
         <div>
-          <span class="text-base font-bold text-white block">458</span>
-          <span class="text-[11px] text-neutral-500">Contributors</span>
+          <span class="text-base font-bold text-slate-900 block">458</span>
+          <span class="text-[11px] text-slate-400">Contributors</span>
         </div>
-        <div class="h-6 w-px bg-cardBorder"></div>
+        <div class="h-6 w-px bg-borderSubtle"></div>
         <div>
-          <span class="text-base font-bold text-white block">874</span>
-          <span class="text-[11px] text-neutral-500">Total Votes</span>
+          <span class="text-base font-bold text-slate-900 block">874</span>
+          <span class="text-[11px] text-slate-400">Total Votes</span>
         </div>
       </div>
     </section>
@@ -456,22 +453,54 @@
   </div>
 
   <!-- Footer -->
-  <footer class="border-t border-cardBorder bg-[#060608] py-8 text-xs text-neutral-500">
+  <footer class="border-t border-borderSubtle bg-surfaceMuted py-8 text-xs text-textSecondary">
     <div class="max-w-[1380px] mx-auto px-4 lg:px-8 flex flex-col md:flex-row items-center justify-between gap-4">
       <div>
-        <a href="https://leohex.com" target="_blank" class="hover:text-neutral-300">LEOHEX.com</a> / 
-        <a href="https://leohex.art" target="_blank" class="hover:text-neutral-300">LEOHEX.art</a>
+        <a href="https://leohex.com" target="_blank" class="font-semibold text-slate-800 hover:underline">LEOHEX.com</a> / 
+        <a href="https://leohex.art" target="_blank" class="font-semibold text-slate-800 hover:underline">LEOHEX.art</a>
         <p class="mt-1 text-[11px]">© 2016–2026 LEOHEX. All rights reserved. Community content belongs to its respective creators.</p>
       </div>
-      <div class="mono-accent text-[11px] text-neutral-600 text-center md:text-right">
-        <div>Release information</div>
+      <div class="mono-tag text-[11px] text-slate-400 text-center md:text-right">
+        <div>Theme: Editorial Pure White</div>
         <div>v0.4.0 Built 2026-09-14 14:58:15 UTC+7</div>
       </div>
     </div>
   </footer>
 
+  <!-- 选项卡主题过滤脚本 -->
   <script>
     lucide.createIcons();
+
+    function filterTheme(theme, btnElement) {
+      // 切换按钮激活样式
+      document.querySelectorAll('.theme-tab-btn').forEach(btn => {
+        btn.classList.remove('bg-slate-900', 'text-white');
+        btn.classList.add('bg-slate-100', 'text-slate-700');
+      });
+      btnElement.classList.add('bg-slate-900', 'text-white');
+      btnElement.classList.remove('bg-slate-100', 'text-slate-700');
+
+      // 过滤卡片
+      const cards = document.querySelectorAll('.editorial-card');
+      cards.forEach(card => {
+        const cardTheme = card.getAttribute('data-theme');
+        if (theme === 'all' || !cardTheme || cardTheme === theme) {
+          card.style.display = 'flex';
+        } else {
+          card.style.display = 'none';
+        }
+      });
+    }
+
+    // 搜索过滤
+    document.getElementById('filterSearch').addEventListener('input', function(e) {
+      const q = e.target.value.toLowerCase();
+      const cards = document.querySelectorAll('.editorial-card');
+      cards.forEach(card => {
+        const text = card.innerText.toLowerCase();
+        card.style.display = text.includes(q) ? 'flex' : 'none';
+      });
+    });
   </script>
 </body>
 </html>
